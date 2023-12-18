@@ -3,10 +3,12 @@ BTL IOT_Parking slot
 
 Thành viên và phân chia công việc
 Thành viên: Nguyễn Thị Quyên - B20DCAT152
-		          Trần Đăng Trọng - B20DCAT191
+		          
+	    Trần Đăng Trọng - B20DCAT191
             
 Phân công: Nguyễn Thị Quyên: lên ý tưởng, thiết kế mạch, mô hình mạch, lập trình webserver
-           Trần Đăng Trọng: triển khai phần cứng, lắp mạch, lập trình webserver, báo cáo
+           
+	   Trần Đăng Trọng: triển khai phần cứng, lắp mạch, lập trình webserver, báo cáo
 
 Ý tưởng
 - Mô hình sử dụng web để quản lý bãi đỗ xe.
@@ -44,4 +46,5 @@ Thư viện sử dụng
 - LiquidCrystal_I2C.h: Thư viện cho phép giao tiếp với một module LCD 20x4 thông qua giao thức I2C.
 
 Link báo cáo: https://docs.google.com/document/d/1GeTb_3yTSkK9aaes8IF583ZFMiAY2S8L/edit?usp=drivesdk&ouid=106224551968194405189&rtpof=true&sd=true
+
 Link youtube: 
