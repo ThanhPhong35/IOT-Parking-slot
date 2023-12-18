@@ -1,6 +1,13 @@
 # IOT-Parking-slot
 BTL IOT_Parking slot
 
+Thành viên và phân chia công việc
+Thành viên: Nguyễn Thị Quyên - B20DCAT152
+		          Trần Đăng Trọng - B20DCAT191
+            
+Phân công: Nguyễn Thị Quyên: lên ý tưởng, thiết kế mạch, mô hình mạch, lập trình webserver
+           Trần Đăng Trọng: triển khai phần cứng, lắp mạch, lập trình webserver, báo cáo
+
 Ý tưởng
 - Mô hình sử dụng web để quản lý bãi đỗ xe.
 - Có thẻ giữ xe
