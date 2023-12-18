@@ -43,3 +43,5 @@ Thư viện sử dụng
 - Wire.h: Thư viện cho phép sử dụng giao thức I2C để giao tiếp với các thiết bị khác.
 - LiquidCrystal_I2C.h: Thư viện cho phép giao tiếp với một module LCD 20x4 thông qua giao thức I2C.
 
+Link báo cáo: https://docs.google.com/document/d/1GeTb_3yTSkK9aaes8IF583ZFMiAY2S8L/edit?usp=drivesdk&ouid=106224551968194405189&rtpof=true&sd=true
+Link youtube: 
