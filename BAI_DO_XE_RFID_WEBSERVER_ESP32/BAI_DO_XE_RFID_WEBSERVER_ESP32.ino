@@ -7,6 +7,7 @@
 #include <WiFi.h>
 #include <WebServer.h>
 #include <WebSocketsServer.h>
+
 WebServer webServer(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
@@ -19,7 +20,7 @@ MFRC522 mfrc522(SS_PIN, RST_PIN);
 #define buzzer 16
 
 #include "DHT.h"
-#define DHTPIN 35
+#define DHTPIN 2
 #define DHTTYPE DHT11
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -31,6 +32,7 @@ int setupMode=0;
 #include "setupPage.h"
 #include "dataPage.h"
 #include "homePage.h"
+#include "chartPage.h"
 
 String ssid_ap,pass_ap;
 String user_login,pass_login;
@@ -79,6 +81,8 @@ void setup() {
   Serial.begin(115200);
   EEPROM.begin(512);
   Wire.begin();  
+
+  dht.begin();
 
   lcd.init();                //Khởi tạo LCD
   lcd.clear();               //Xóa màn hình
@@ -387,6 +391,31 @@ void setupWifi(){
     Serial.println("Ip webserver: " + WiFi.softAPIP().toString());
   }
 }
+
+String readDHTTemperature() {
+  float t = dht.readTemperature();
+  if (isnan(t)) {    
+    Serial.println("Failed to read from DHT sensor!");
+    return "--";
+  }
+  else {
+    Serial.println(t);
+    return String(t);
+  }
+}
+
+String readDHTHumidity() {
+  float h = dht.readHumidity();
+  if (isnan(h)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return "--";
+  }
+  else {
+    Serial.println(h);
+    return String(h);
+  }
+}
+
 void setupWebServer(){
   webServer.on("/",[]{
     setupMode=0;
@@ -410,11 +439,17 @@ void setupWebServer(){
     String s = FPSTR(dataPage);
     webServer.send(200,"text/html",s);
   });
+  webServer.on("/chart",[]{
+    String s = FPSTR(chartPage);
+    webServer.send(200,"text/html",s);
+  });
+  
   webServer.on("/checkLogin",checkLogin);
   webServer.on("/saveLogin",saveLogin);
   webServer.on("/getConfig",getConfig);
   webServer.on("/getWifiList",getWifiList);
   webServer.on("/saveConfig",saveConfig);
+  webServer.on("/getDHT", getDHT);
   webServer.on("/getDataStore",getDataStore);
   webServer.on("/addDataStore",addDataStore);
   webServer.on("/deleteDataStore",deleteDataStore);
@@ -500,6 +535,14 @@ String readString(int n, int m){
   str = str.c_str();
   return str;
 }
+
+void getDHT(){
+  String t= readDHTTemperature();
+  String h= readDHTHumidity();
+  String s = "{\"temp\": \""+ t +"\",\"hum\": \""+ h +"\"}"; 
+  webServer.send(200,"application/json",s);
+}
+
 void getDataStore(){
   //Serial.println("Get data store!");
   setupMode=1;
@@ -524,6 +567,7 @@ void addDataStore(){
   webServer.send(200,"text/html",s);
   //Serial.println(str);
 }
+
 void deleteDataStore(){
   Serial.println("Delete data store!");
   String idcard = webServer.arg("idcard");
@@ -611,6 +655,7 @@ void getDataParking(){
   webServer.send(200,"application/json",str);  
   //Serial.println(str);
 }
+
 void webSocketEvent(uint8_t num, WStype_t type,uint8_t * payload,size_t length){
   String payloadString = (const char *)payload;
   Serial.print("payloadString= ");

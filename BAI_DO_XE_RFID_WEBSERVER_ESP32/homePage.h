@@ -1,12 +1,15 @@
-const char homePage[] PROGMEM = R"=====( 
+const char homePage[] PROGMEM = R"rawliteral( 
 <!DOCTYPE html>
 <html>
 <head>
   <title>HOME</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <style type="text/css">
+
 
     body{
        font-family: prevattscriptssk;
+       background-color: #f3f3f3;
        text-decoration: none;
        list-style-type: none;
     }
@@ -43,153 +46,162 @@ const char homePage[] PROGMEM = R"=====(
     }
 
     #main{
-      margin: 5px auto;
-      width: 728px;
+        width: 100vw;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+    
     #content{
-      width: 728px;
-      float: left;
-      border-radius: 5px;
-      color: blue;
-      margin-left: 80px;
-    }
-    h3{
-      margin-top: 0px;
-      margin-bottom: 0px;
-    }
-    p{
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-    .div1{
-      margin-left: 20px;
-      float: left;
-      margin-bottom: 10px;
+        border: 2px solid #ffa500;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
     }
 
-    .div2 div{
-      margin-left: 20px;
-    }
-
-    .rfid{
-      margin-left:0;
-      background-color: aquamarine;
+    #content .chart{
+      width: max-content;
+      margin: 20px auto;
       padding: 20px;
-      border-radius: 5px;
-    }
-    .label{
-      float: left;
-      padding-right: 10px;
-      font-size: 18px;
+      border-radius: 8px;
+      border: 2px solid #ffa500;
+      cursor: pointer;
+      font-size: 20px;
     }
 
-    #content .div1 table input[type="text"],
-    #content .div1 table [type="password"]{
+    #content .chart:hover{
+      background-color: aquamarine;
+    }
+
+    #content .rfid{
+      padding: 20px;
+      background-color: #059e8a;
+      border-radius: 5px;
+      color: white;
+    }
+    #content .rfid h3{
+      text-align: center;
+      padding: 5px;
+    }
+
+    #content .rfid table td{
+      padding: 5px;
+    }
+
+    #content .rfid .label{
+        margin-right: 10px;
+        font-size: 18px;
+        color: white;
+    }
+
+    #content .rfid input[type="text"],
+    #content .rfid input[type="password"]{
         width: 300px;
-        padding: 5px 10px;
+        padding: 3px 10px;
         font-size: 15px;
         border-radius: 5px;
-        border: 2px solid #ffa500;
+        border: 1.5px solid #ffa500;
+
     }
-    input[type="button"]{
-      width: 120px;
-      height: 50px;
-      float: left;
-      margin: 10px 5px;
-      outline: none;
-      text-align: center; 
-      white-space: normal;
-      font-weight: bold;
-      color: blue;
-      background: white;
-      border-radius: 5px;
-      border-color: blue;
+
+    #content .menu{
+      display: flex;
+      justify-content: space-evenly;
     }
-    input[type="text"]{
-      width: 270px;
-      float: left;
-      margin: 5px 0px;
+    
+    #content .menu input[type="button"]{
+        margin: 10px 0;
+        padding: 7px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        background: linear-gradient(to right, #ffd400,#ffa500);
     }
-    .tablefull{
-      width: 600px;
-      height: 280px;
-      float: left;
-      margin: 3px 4px;
-      outline: none;
-      text-align: center; 
-      white-space: normal;
-      font-weight: bold;
-      border: solid 1px #ffa500;
-      border-radius: 8px;
+
+    #content .div1 input[type="checkbox"]{
+        margin-right: 5px;
+        width: 20px;
     }
-    .row1{
-      width: 560px;
-      float: left;
-      /*border: solid 1px red;*/
+
+    #content .rfid,
+    #content .div2
+    {
+      margin: auto;
+      width: max-content;
     }
-    .row2{
-      width: 560px;
-      float: left;
-      /*border: solid 1px red;*/
+
+    #content .div2 .row1,
+    #content .div2 .row2
+    {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 30px;
     }
-    .col1{
-      width: 150px;
-      float: left;
-    }
-    .col2{
-      width: 150px;
-      float: left;
-    }
-    .col3{
-      width: 150px;
-      float: left;
-    }
-    input[type="text"].textData{
-      width: 160px;
-      float: left;
+
+    #content .div2 .row1 input{
+      margin-top: 30px;
+      margin-bottom: 10px;
+      width: 60px;
+      height: 60px;
       text-align: center;
-      margin: 0px 0px;
+      font-size: 25px;
+      border-radius: 50%;
+      border-color: red;
+      margin-left: 80px;
+    }
+
+    #content .div2 .row2 input{
+      margin: 3px 0;
+      width: 230px;
+      text-align: center;
+      padding: 3px;
       outline: none;
       border: none;
     }
-    input[type="text"].led{
-      width: 60px;
-      height: 60px;
-      font-size: 20px;
-      border: solid red 2px;
-      border-radius: 50%;
-      outline: none;
-      text-align: center; 
-      float: left;
-      margin-left: 50px;
-    }
+
   </style>
   <meta name="viewport" content="width=device-width,user-scalable=0" charset="utf-8">
 </head>
 <body>
+  <div id="header">
+    <p class="p1"> Học Viện Công Nghệ Bưu Chính Viễn Thông</p>
+    <p class="p2"> Bài tập kết thúc học phẩn IOT </p>
+    <p class="p3"> ĐỀ TÀI: IOT CAR PARKING </p>
+    <p class="p4"> SVTH: Nguyễn Thị Quyên, Trần Đăng Trọng </p>
+</div>
   <div id="main">
-    <div id="header">
-        <p class="p1"> Học Viện Công Nghệ Bưu Chính Viễn Thông</p>
-        <p class="p2"> Bài tập kết thúc học phẩn IOT </p>
-        <p class="p3"> ĐỀ TÀI: IOT CAR PARKING </p>
-        <p class="p4"> SVTH: Nguyễn Thị Quyên, Trần Đăng Trọng </p>
-    </div>
     <div id="content">
-        <div class="div1" style="margin-left: 100px;">
-            <input style="background: green; color: white;border-color: orange;" type="button" onclick="window.location.href='/setup'" value="Thiết lập wifi">
-            <input style="background: yellow; color: green;border-color: orange;" type="button" onclick="window.location.href='/data'" value="Thiết lập thẻ RFID">
-            <input style="background: red; color: white;border-color: orange;" type="button" onclick="exit()" value="Thoát">
+        <div class="menu">
+            <input type="button" onclick="window.location.href='/setup'" value="Thiết lập wifi">
+            <input type="button" onclick="window.location.href='/data'" value="Thiết lập thẻ RFID">
+            <input type="button" onclick="exit()" value="Thoát">
           </div>
-        <div class="div1 rfid" style="margin-left: 80px; margin-top: 20px;">
+          <div class="chart" onclick="window.location.href='/chart'">
+            <p>
+              <i class="fas fa-thermometer-half" style="color:#059e8a;"></i> 
+              <span class="dht-labels">Nhiệt độ:</span> 
+              <span id="temperature"></span>
+              <sup class="units">&deg;C</sup>
+            </p>
+            <p>
+              <i class="fas fa-tint" style="color:#00add6;"></i> 
+              <span class="dht-labels">Độ ẩm:</span>
+              <span id="humidity"></span>
+              <sup class="units">&percnt;</sup>
+            </p>
+          </div>
+        <div class="rfid">
           <div>
-            <h3 style="text-align: center;">THẺ RFID</h3>
+            <h3>THẺ RFID</h3>
             <table>
               <tr>
                 <td>
                   <span class="label" >Mã thẻ:</span>
                 </td>
                 <td>
-                  <input id="idcard" type="text" style="padding: 3px 10px;">
+                  <input id="idcard" type="text" >
                 </td>
               </tr>
               <tr>
@@ -197,15 +209,15 @@ const char homePage[] PROGMEM = R"=====(
                   <span class="label">Tên thẻ:</span>
                 </td>
                 <td>
-                  <input id="namecard" type="text" style="padding: 3px 10px;">
+                  <input id="namecard" type="text">
                 </td>
               </tr>
             </table>
           </div>
         </div>
-        <div class="div2" style="margin-left: -40px; margin-top: 20px;">
+        <div class="div2" >
           <div class="tablefull infor">
-            <div class="row1" style="margin-top: 20px;">
+            <div class="row1">
               <div class="col1">
                 <input id="led1" class="led" type="text" readonly="true" value="1">
               </div>
@@ -222,7 +234,7 @@ const char homePage[] PROGMEM = R"=====(
                 <input id="data1" class="textData" type="text" readonly="true" value=" ">
               </div>
               <div class="col2">
-                <input id="name2" class="textData" type="text" readonly="true" value=" "><br>
+                <input id="name2" class="textData" type="text" readonly="true" value=""><br>
                 <input id="data2" class="textData" type="text" readonly="true" value=" ">
               </div>
               <div class="col3">
@@ -231,7 +243,7 @@ const char homePage[] PROGMEM = R"=====(
               </div>
             </div>
   
-            <div class="row1" style="margin-top: 40px;">
+            <div class="row1">
               <div class="col1">
                 <input id="led4" class="led" type="text" readonly="true" value="4">
               </div>
@@ -270,6 +282,23 @@ const char homePage[] PROGMEM = R"=====(
          }
       }
       var xhttp = new XMLHttpRequest();
+      setInterval(function() {
+        getDHT();
+      }, 5000);
+      
+      function getDHT(){
+        xhttp.onreadystatechange =function(){
+          if(xhttp.readyState==4 && xhttp.status==200){
+            var Temp = xhttp.responseText;
+            var obj =JSON.parse(Temp);
+            document.getElementById("temperature").innerHTML=obj.temp;
+            document.getElementById("humidity").innerHTML=obj.hum;
+          }
+        }
+        xhttp.open("GET", "/getDHT", true);
+        xhttp.send();
+      }
+
       function getDataParking(){
         xhttp.onreadystatechange = function(){
           if(xhttp.readyState==4 && xhttp.status==200){
@@ -379,4 +408,4 @@ const char homePage[] PROGMEM = R"=====(
     </script>
   </body>
   </html>
-  )=====";
+  )rawliteral";
